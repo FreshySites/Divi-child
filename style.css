@@ -124,7 +124,7 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 
 /* if parent link of child menu is a deadlink, then make it not clickable */
 #main-header #mobile_menu.et_mobile_menu .menu-item-has-children > a[href="#0"] { 
-    pointer-events: none;
+	pointer-events: none;
 }
 
 /* - mobile menu toggling elements, injected via jQuery - */
