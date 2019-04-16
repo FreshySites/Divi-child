@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 1.2.1
+Version: 1.2.2
 */
 /* Add your own styles at the bottom */
 
@@ -527,52 +527,52 @@ img.gform_ajax_spinner[src$=".png"] {
 /* -- HELPERS -- */
 
 /* use the "fullwidth-section" class on a SECTION to make a "standard" SECTION truly be fullwidth 
-(NOTE: the ROW module settings needs to be set to fullwidth, and the SECTION needs THIS class) */
+(NOTE: the SECTION needs THIS class) */
 .fullwidth-section.et_pb_section {
 	padding: 0;
 }
-.fullwidth-section.et_pb_section > .et_pb_row.et_pb_row_fullwidth {
+.fullwidth-section.et_pb_section > .et_pb_row {
 	width: 100% !important;
 	max-width: 100% !important;
 	padding: 0;
 }
 
 /* use the "fullwidth-row" class on a SECTION to make a "full width" ROW truly be fullwidth 
-(NOTE: the ROW module settings needs to be set to fullwidth, with no gutters, and the SECTION needs THIS class,
+(NOTE: the ROW module settings needs to be Gutter Width 1, and the SECTION needs THIS class,
 and unlike the class above, THIS class will auto-add padding to the columns) */
 .fullwidth-row.et_pb_section {
 	padding: 0;	
 }
-.fullwidth-row.et_pb_section .et_pb_row.et_pb_row_fullwidth {
+.fullwidth-row.et_pb_section .et_pb_row {
 	width: 100% !important;
 	max-width: 100% !important;
 	margin: 0 !important;
 	padding: 0 !important;
 }
 /* helps add padding to each column */
-.fullwidth-row.et_pb_section .et_pb_row.et_pb_row_fullwidth > .et_pb_column {
+.fullwidth-row.et_pb_section .et_pb_row > .et_pb_column {
 	padding: 50px 10%;
 }
 @media (min-width: 767px) {
-	.fullwidth-row.et_pb_section .et_pb_row.et_pb_row_fullwidth > .et_pb_column {
+	.fullwidth-row.et_pb_section .et_pb_row > .et_pb_column {
 		padding: 80px 6%;
 	}
 }
 /* for some reason Divi removes bottom margin from modules if in column with no gutters, 
 so we need to add margins back */
-.fullwidth-row.et_pb_section .et_pb_row.et_pb_row_fullwidth.et_pb_gutters1 > .et_pb_column .et_pb_module:not(:last-child) {
+.fullwidth-row.et_pb_section .et_pb_row.et_pb_gutters1 > .et_pb_column .et_pb_module:not(:last-child) {
 	margin-bottom: 30px;
 }
 @media (min-width: 981px) {
-	.fullwidth-row.et_pb_section .et_pb_row.et_pb_row_fullwidth.et_pb_gutters1 > .et_pb_column_2_3 .et_pb_module:not(:last-child) {
+	.fullwidth-row.et_pb_section .et_pb_row.et_pb_gutters1 > .et_pb_column_2_3 .et_pb_module:not(:last-child) {
 		margin-bottom: 4.242%;
 	}
-	.fullwidth-row.et_pb_section .et_pb_row.et_pb_row_fullwidth.et_pb_gutters1 > .et_pb_column_1_3 .et_pb_module:not(:last-child) {
+	.fullwidth-row.et_pb_section .et_pb_row.et_pb_gutters1 > .et_pb_column_1_3 .et_pb_module:not(:last-child) {
 		margin-bottom: 9.27%;
 	}	
 }
 /* reduce gap between toggles if in fullwidth row */
-.fullwidth-row.et_pb_section .et_pb_row.et_pb_row_fullwidth.et_pb_gutters1 > .et_pb_column .et_pb_module.et_pb_toggle:not(:last-child) {
+.fullwidth-row.et_pb_section .et_pb_row.et_pb_gutters1 > .et_pb_column .et_pb_module.et_pb_toggle:not(:last-child) {
 	margin-bottom: 3px;
 }
 
