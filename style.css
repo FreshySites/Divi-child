@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 1.2.2
+Version: 1.3.0
 */
 /* Add your own styles at the bottom */
 
@@ -245,7 +245,7 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 	vertical-align: middle;
 	width: 45px;
 	height: 20px;
-	background-image: url("/wp-content/uploads/freshysites-logo-white.svg");
+	background-image: url("/wp-content/uploads/fs-lettermark-white.svg");
 	background-repeat: no-repeat;
 	background-size: 45px 20px;
 	text-indent: 100%;
