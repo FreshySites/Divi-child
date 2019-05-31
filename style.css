@@ -243,11 +243,11 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 #freshy_copyright a.copyright_fs {
 	display: block;
 	vertical-align: middle;
-	width: 45px;
+	width: 42px;
 	height: 20px;
 	background-image: url("/wp-content/uploads/fs-lettermark-white.svg");
 	background-repeat: no-repeat;
-	background-size: 45px 20px;
+	background-size: 42px 20px;
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
