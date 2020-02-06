@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 1.3.0
+Version: 1.4.1
 */
 /* Add your own styles at the bottom */
 
@@ -305,15 +305,15 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 /* -- CHECKLIST -- */
 
 .checklist ul {
-    margin: 0;
+	margin: 0;
 	padding: 0 !important;
-    list-style: none;
+	list-style: none;
 }
 
 .checklist ul li {
-    position: relative;
-    padding-left: 30px;
-    margin: 0 0 6px !important;
+	position: relative;
+	padding-left: 30px;
+	margin: 0 0 6px !important;
 }
 
 .checklist-columns-2 ul li,
@@ -349,7 +349,7 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 	.checklist-columns-4 ul li {
 		float: left;
 		width: 50%;
-      	padding-right: 30px;
+		padding-right: 30px;
 	}
 	.checklist-columns-2 ul li:nth-child(odd),
 	.checklist-columns-3 ul li:nth-child(odd),
@@ -415,35 +415,35 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 }
 
 .checklist ul li::before {
-    font-family: 'FontAwesome';
-    content: '\f058';
-    width: 20px;
-    margin: 0;
-    display: inline-block;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: #32a709;
-    /* set font size helps make icon sharper */
-    font-size: 22px;
+	font-family: 'ETModules';
+	content: '\f058';
+	width: 20px;
+	margin: 0;
+	display: inline-block;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #32a709;
+	/* set font size helps make icon sharper */
+	font-size: 22px;
 	font-weight: normal;
 }
 
 .pluslist ul li::before {
-    content: '\f055';
+	content: '\f055';
 }
 .eventlist ul li::before {
-    content: '\f274';
+	content: '\f274';
 }
 .locationlist ul li::before {
-    content: '\f041';
+	content: '\f041';
 }
 .externallist ul li::before {
 	content: '\f14c';	
 }
 .pdflist ul li::before {
-    content: '\f1c1';
+	content: '\f1c1';
 	color: red;
 }
 .userlist ul li::before {
