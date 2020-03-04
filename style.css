@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 1.4.1
+Version: 1.4.2
 */
 /* Add your own styles at the bottom */
 
@@ -577,3 +577,18 @@ so we need to add margins back */
 }
 
 /* -- END HELPERS -- */
+
+/* -- BLOG -- */
+
+/* sidebar recent posts */
+.et_pb_widget.widget_recent_entries ul li  {
+	margin-bottom: 1em;
+}
+
+/* sidebar recent posts dates */
+.et_pb_widget.widget_recent_entries ul li span.post-date {
+	display: table;
+	font-size: 0.85em;
+}
+
+/* -- END BLOG -- */
