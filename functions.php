@@ -7,8 +7,8 @@ function fs_theme_enqueue_stuff() {
 	$parent_version = wp_get_theme()->parent()->get( 'Version' );
 	$child_version = wp_get_theme()->get('Version');
 	// we check file date of child stylesheet and script, so we can append to version number (for cache busting)
-	$style_cache_buster = date("YmdHi", filemtime( get_stylesheet_directory() . '/style.css'));
-	$script_cache_buster = date("YmdHi", filemtime( get_stylesheet_directory() . '/script.js'));
+	$style_cache_buster = date("YmdHis", filemtime( get_stylesheet_directory() . '/style.css'));
+	$script_cache_buster = date("YmdHis", filemtime( get_stylesheet_directory() . '/script.js'));
 	// dequeue the parent stylesheet, otherwise you will have duplicate child stylesheet, since the parent theme also pulls in the child stylesheet automatically
 	wp_dequeue_style( $parent_style );
 	// now re-add parent style and add parent version
@@ -44,3 +44,8 @@ function fs_custom_gforms_spinner( $image_src, $form ) {
 	$lime_spinner_url = $upload_dir['baseurl'] . '/lime-spinner.png';
 	return $lime_spinner_url;
 }
+
+/* All in One SEO Pack */
+
+// disable the SEO menu in the admin toolbar
+add_filter( 'aioseo_show_in_admin_bar', '__return_false' );
