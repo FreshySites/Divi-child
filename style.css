@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 1.5.0
+Version: 1.5.1
 */
 /* Add your own styles at the bottom */
 
@@ -476,6 +476,28 @@ p:not(.has-background):last-child {
 }
 
 /* -- END DIVI HACKS -- */
+
+
+/* -- PASSWORD PROTECTED -- */
+
+/* set a max width to make it only as wide as most content */
+.post-password-required .et_password_protected_form {
+	width: 80%;
+	margin: 10% auto;
+	max-width: 1140px;
+}
+
+/* give the input a border */
+.post-password-required .et_password_protected_form p input {
+	border: 1px solid !important;
+}
+
+/* remove the arrow on hover of the submit button */
+.post-password-required .et_password_protected_form .et_submit_button::after {
+	display: none;
+}
+
+/* -- END PASSWORD PROTECTED -- */
 
 
 /* -- TESTIMONIALS PLUGIN -- */
