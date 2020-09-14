@@ -49,3 +49,42 @@ function fs_custom_gforms_spinner( $image_src, $form ) {
 
 // disable the SEO menu in the admin toolbar
 add_filter( 'aioseo_show_in_admin_bar', '__return_false' );
+
+/* WP Activity Log */
+
+// Check if WP Activity Log plugin is active
+if ( is_plugin_active( 'wp-security-audit-log/wp-security-audit-log.php' ) ) {
+	// hide it from the Plugin list
+	add_filter('all_plugins', 'fs_remove_wp_activity_log_admin_plugin_list');
+	function fs_remove_wp_activity_log_admin_plugin_list($plugins) {
+		// get current User
+		$user = wp_get_current_user(); 
+		// get their email address
+		$email = $user->user_email;
+		// check the email's domain
+		$domain = 'freshysites.com';
+		// check if email address matches domain list
+		$banned = strpos($email, $domain) === false;
+		// if current user's email addess doesn't match domain list, then hide the menu items
+		if( $user && $banned ) {
+			unset($plugins['wp-security-audit-log/wp-security-audit-log.php']);
+		}
+		return $plugins;
+	}
+	// hide it from the Admin menu
+	add_action('admin_menu', 'fs_remove_wp_activity_log_admin_menu_links', 999);
+	function fs_remove_wp_activity_log_admin_menu_links() {
+		// get current User
+		$user = wp_get_current_user(); 
+		// get their email address
+		$email = $user->user_email;
+		// check the email's domain
+		$domain = 'freshysites.com';
+		// check if email address matches domain list
+		$banned = strpos($email, $domain) === false;
+		// if current user's email addess doesn't match domain list, then hide the menu items
+		if( $user && $banned ) {
+			remove_menu_page('wsal-auditlog');
+		}
+	}
+}
