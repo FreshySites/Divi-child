@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 1.6.1
+Version: 1.7.0
 */
 /* Add your own styles at the bottom */
 
@@ -605,6 +605,42 @@ so we need to add margins back */
 /* reduce gap between toggles if in fullwidth row */
 .fullwidth-row.et_pb_section .et_pb_row.et_pb_gutters1 > .et_pb_column .et_pb_module.et_pb_toggle:not(:last-child) {
 	margin-bottom: 3px;
+}
+
+@media (max-width: 980px) {
+	/* use the "stacked-flex" class on a ROW to make it be flexbox when stacked, to help with adjusting order of stacked columns */
+	.stacked-flex {
+		display: flex;
+	}
+	/* add the desired class to COLUMNS to designate their order when stacked within a "stacked-flex" ROW */
+	.stacked-order-negative-4 {
+		order: -4;
+	}
+	.stacked-order-negative-3 {
+		order: -3;
+	}
+	.stacked-order-negative-2 {
+		order: -2;
+	}
+	.stacked-order-negative-1 {
+		order: -1;
+	}
+	.stacked-order-1 {
+		order: 1;
+	}
+	.stacked-order-2 {
+		order: 2;
+	}
+	.stacked-order-3 {
+		order: 3;
+	}
+	.stacked-order-4 {
+		order: 4;
+	}
+	/* adds margin to former "last" column that otherwise wouldn't have it */
+	.stacked-flex:last-child .et_pb_column:last-child {
+		margin-bottom: 30px;
+	}
 }
 
 /* -- END HELPERS -- */
