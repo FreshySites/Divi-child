@@ -23,6 +23,7 @@ function fs_theme_enqueue_stuff() {
 
 // Creates shortcode to allow placing Divi Library module inside of another module's text area. Creates a shortcode to show the Library module.
 // https://www.creaweb2b.com/en/how-to-add-a-divi-section-or-module-inside-another-module/
+// example usage: [showmodule id="123"]
 function showmodule_shortcode($moduleid) {
 	extract(shortcode_atts(array('id' =>'*'),$moduleid));   
 	return do_shortcode('[et_pb_section global_module="'.$id.'"][/et_pb_section]');
