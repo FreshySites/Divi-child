@@ -51,18 +51,22 @@ function fs_custom_gforms_spinner( $image_src, $form ) {
 // disable the SEO menu in the admin toolbar
 add_filter( 'aioseo_show_in_admin_bar', '__return_false' );
 
-// remove the AIOSEO Details column for users without a freshysites.com email address
-add_action( 'init', function() {
-	// get current User
-	$user = wp_get_current_user(); 
-	// get their email address
-	$email = $user->user_email;
-	// check the email's domain
-	$domain = 'freshysites.com';
-	// check if email address matches domain list
-	$banned = strpos($email, $domain) === false;
-	// if current user's email addess doesn't match domain list, then hide the AIOSEO column
-	if( $user && $banned ) {
-		remove_action( 'current_screen', [ aioseo()->admin, 'addPostColumns' ], 1 );
-	}
-} );
+// disable the AIOSEO Details column for users that don't have a freshysites.com email address
+if ( function_exists( 'aioseo' ) ) {
+	// fires after WordPress has finished loading but before any headers are sent.
+	add_action( 'init', function() {
+		// get current User
+		$user = wp_get_current_user(); 
+		// get their email address
+		$email = $user->user_email;
+		// check the email's domain
+		$domain = 'freshysites.com';
+		// check if email address matches domain list
+		$banned = strpos($email, $domain) === false;
+		// if current user's email address doesn't match domain list
+		if( $user && $banned ) {
+			// remove the AIOSEO Details column for users without a particular email address domain
+			remove_action( 'current_screen', [ aioseo()->admin, 'addPostColumns' ], 1 );
+		}
+	} );
+}
