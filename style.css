@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 1.8.2
+Version: 1.8.3
 */
 /* Add your own styles at the bottom */
 
@@ -611,6 +611,7 @@ so we need to add margins back */
 	/* use the "stacked-flex" class on a ROW to make it be flexbox when stacked, to help with adjusting order of stacked columns */
 	.stacked-flex {
 		display: flex;
+		flex-wrap: wrap; 
 	}
 	/* add the desired class to COLUMNS to designate their order when stacked within a "stacked-flex" ROW */
 	.stacked-order-negative-4 {
