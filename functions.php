@@ -32,9 +32,6 @@ add_shortcode('showmodule', 'showmodule_shortcode');
 
 /* Gravity Forms */
 
-// This filter is used to enable a "Hidden" option in the Field Label Visibility and Sub-Label Placement settings of each field's Appearance tab 
-add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
-
 // This filter can be used to prevent the page from auto jumping to form confirmation upon form submission
 // add_filter( 'gform_confirmation_anchor', '__return_false' );
 
