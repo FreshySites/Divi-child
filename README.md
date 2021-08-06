@@ -7,3 +7,5 @@ Divi child theme via FreshySites
 - Collaspislbe mobile sub menus that allow sub menus to be expanded and collapsed, while allowing the parent link to still work
 
 <strong>Please note:</strong> you should remove the `-master` text from the `Divi-child` folder names, since GitHub adds those, and WordPress doesn't want them.
+
+Need help? FreshySites is a <a href="https://freshysites.com/wordpress/">WordPress website development agency</a>, and the <a href="https://freshysites.com/wordpress/divi/">WordPress Divi theme experts</a> in building websites.
