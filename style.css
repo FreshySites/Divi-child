@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 1.9.0
+Version: 1.9.1
 */
 /* Add your own styles at the bottom */
 
@@ -407,7 +407,7 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 
 .checklist ul li::before {
 	font-family: 'ETModules';
-	content: '\f058';
+	content: '\4e';
 	width: 20px;
 	margin: 0;
 	display: inline-block;
@@ -420,25 +420,11 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 	font-size: 22px;
 	font-weight: normal;
 }
-
 .pluslist ul li::before {
-	content: '\f055';
-}
-.eventlist ul li::before {
-	content: '\f274';
-}
-.locationlist ul li::before {
-	content: '\f041';
+	content: '\e050';
 }
 .externallist ul li::before {
-	content: '\f14c';	
-}
-.pdflist ul li::before {
-	content: '\f1c1';
-	color: red;
-}
-.userlist ul li::before {
-	content: '\f2c0';
+	content: '\e906';	
 }
 
 /* -- END CHECKLIST -- */
