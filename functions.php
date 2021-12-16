@@ -1,20 +1,26 @@
 <?php
 /* Enqueue necessary CSS and JS files for Child Theme */
 
-add_action( 'wp_enqueue_scripts', 'fs_theme_enqueue_stuff', 999999999999 ); // set to higher priority than Divi's add_action of et_divi_replace_parent_stylesheet
 function fs_theme_enqueue_stuff() {
-	$parent_style = 'divi-style'; // Divi tries to enqueue our child theme style.css for us, and assigns it this handle name
-	$child_version = wp_get_theme()->get('Version'); // get our child theme version
+	// Divi assigns its style.css with this handle
+	$parent_handle = 'divi-style'; 
+	// Get the current child theme data
+	$current_theme = wp_get_theme(); 
+	// get the parent version number of the current child theme
+	$parent_version = $current_theme->parent()->get('Version'); 
+	// get the version number of the current child theme
+	$child_version = $current_theme->get('Version'); 
 	// we check file date of child stylesheet and script, so we can append to version number string (for cache busting)
 	$style_cache_buster = date("YmdHis", filemtime( get_stylesheet_directory() . '/style.css'));
 	$script_cache_buster = date("YmdHis", filemtime( get_stylesheet_directory() . '/script.js'));
-	// dequeue the child stylesheet that Divi tried to pull in for us, since the parent theme pulls in the child stylesheet automatically, otherwise we will have duplicate child stylesheets
-	wp_dequeue_style( $parent_style );
-	// get child style which is dependent on parent style, and get child version
-	wp_enqueue_style( 'fs-child-style', get_stylesheet_uri(), array(), $child_version .'-'. $style_cache_buster );
+	// first we pull in the parent theme styles that it needs
+	wp_enqueue_style( $parent_handle, get_template_directory_uri() . '/style.css', array(), $parent_version );
+	// then we get the child theme style.css file, which is dependent on the parent theme style, then append string of child version and file date
+	wp_enqueue_style( 'fs-child-style', get_stylesheet_uri(), array( $parent_handle ), $child_version .'-'. $style_cache_buster );
 	// will grab the script file from the child theme directory, and is reliant on jquery and the divi-custom-script (so it comes after that one)
 	wp_enqueue_script( 'fs-child-script', get_stylesheet_directory_uri() . '/script.js', array('jquery', 'divi-custom-script'), $child_version .'-'. $script_cache_buster, true);
 }
+add_action( 'wp_enqueue_scripts', 'fs_theme_enqueue_stuff' );
 
 /* Divi */
 
