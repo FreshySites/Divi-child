@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 2.3.0
+Version: 2.3.1
 */
 /* Add your own styles at the bottom */
 
@@ -489,14 +489,6 @@ p:not(.has-background):last-child {
 
 
 /* -- GRAVITY FORMS -- */
-
-/* we swap out form ajax spinner via PHP Function, and add spinning if its PNG */
-img.gform_ajax_spinner[src$=".png"] {
-	animation: lime-spin 1.5s linear infinite;
-	padding: 0;
-	margin-left: 10px;
-}
-@keyframes lime-spin { 100% { transform:rotate(360deg); } }
 
 /* confirmation (success) message */
 .gform_confirmation_wrapper .gform_confirmation_message {
