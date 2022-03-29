@@ -58,7 +58,7 @@ add_action( 'manage_et_pb_layout_posts_custom_column', 'fs_shortcode_column_cont
 add_filter( 'gform_ajax_spinner_url', 'fs_custom_gforms_spinner', 10, 2 );
 function fs_custom_gforms_spinner( $image_src, $form ) {
 	$upload_dir = wp_upload_dir();
-	$lime_spinner_url = $upload_dir['baseurl'] . '/lime-spinner.png';
+	$lime_spinner_url = $upload_dir['baseurl'] . '/lime-spinner-rotate.svg';
 	return $lime_spinner_url;
 }
 
