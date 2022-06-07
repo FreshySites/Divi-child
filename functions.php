@@ -1,5 +1,5 @@
 <?php
-/* Enqueue necessary CSS and JS files for Child Theme */
+/* -- Enqueue necessary CSS and JS files for Child Theme -- */
 
 function fs_theme_enqueue_stuff() {
 	// Divi assigns its style.css with this handle
@@ -22,7 +22,37 @@ function fs_theme_enqueue_stuff() {
 }
 add_action( 'wp_enqueue_scripts', 'fs_theme_enqueue_stuff' );
 
-/* Divi */
+/* -- Enqueue WP Admin files for Child Theme -- */
+
+function fs_theme_enqueue_admin_stuff() {
+	// Get the current child theme data
+	$current_theme = wp_get_theme(); 
+	// get the version number of the current child theme
+	$child_version = $current_theme->get('Version'); 
+	// Begin enqueue for CSS file that loads in WP backend
+	wp_enqueue_style( 'fs-child-style-admin', get_stylesheet_directory_uri() . '/wp-admin.css', array(), $child_version );
+}
+add_action( 'admin_enqueue_scripts', 'fs_theme_enqueue_admin_stuff' );
+
+/* -- Helpers -- */
+
+// Creates shortcode to allow automatically pulling in the Site Title (from General Settings)
+// This is used by default in the copyright text within the Code module of the Global Footer in the Divi Theme Builder
+function fs_site_title_shortcode() {
+    return get_bloginfo( 'name' );
+}
+add_shortcode( 'fs_site_title','fs_site_title_shortcode' );
+
+/* -- WP Dashboard Widgets -- */
+
+// Remove certain widgets from the backend WP Dashboard page
+function fs_remove_dashboard_widget() {
+	// Pressable widget
+    remove_meta_box( 'pressable_dashboard_widget', 'dashboard', 'normal' );
+} 
+add_action( 'wp_dashboard_setup', 'fs_remove_dashboard_widget' );
+
+/* -- Divi -- */
 
 // Creates shortcode to allow placing Divi Library module inside of another module's text area. Creates a shortcode to show the Library module.
 // https://www.creaweb2b.com/en/how-to-add-a-divi-section-or-module-inside-another-module/
@@ -49,7 +79,7 @@ add_filter( 'manage_et_pb_layout_posts_columns', 'fs_create_shortcode_column', 5
 // add the shortcode content to the new column
 add_action( 'manage_et_pb_layout_posts_custom_column', 'fs_shortcode_column_content', 5, 2 );
 
-/* Gravity Forms */
+/* -- Gravity Forms -- */
 
 // This filter can be used to prevent the page from auto jumping to form confirmation upon form submission
 // add_filter( 'gform_confirmation_anchor', '__return_false' );
@@ -62,7 +92,50 @@ function fs_custom_gforms_spinner( $image_src, $form ) {
 	return $lime_spinner_url;
 }
 
-/* All in One SEO Pack */
+/* -- BlogVault -- */
+
+// Hide Blogvault from non @freshysites.com users
+function fs_check_blogvault_is_active() {
+	// Check if Blogvault plugin is active
+	if ( is_plugin_active( 'blogvault-real-time-backup/blogvault.php' ) ) {
+		// hide it from the Plugins list table
+		add_filter('all_plugins', 'fs_remove_blogvault_admin_plugin_list');
+		function fs_remove_blogvault_admin_plugin_list($plugins) {
+			// get current User
+			$user = wp_get_current_user();
+			// get their email address
+			$email = $user->user_email;
+			// check the email's domain
+			$domain = 'freshysites.com';
+			// check if email address matches domain list
+			$banned = strpos($email, $domain) === false;
+			// if current user's email addess doesn't match domain list, then hide the plugin in the list
+			if( $user && $banned ) {
+				unset($plugins['blogvault-real-time-backup/blogvault.php']);
+			}
+			return $plugins;
+		}
+		// hide it from the Admin sidebar menu
+		add_action('admin_menu', 'fs_remove_blogvault_admin_menu_links', 999);
+		function fs_remove_blogvault_admin_menu_links() {
+			// get current User
+			$user = wp_get_current_user();
+			// get their email address
+			$email = $user->user_email;
+			// check the email's domain
+			$domain = 'freshysites.com';
+			// check if email address matches domain list
+			$banned = strpos($email, $domain) === false;
+			// if current user's email address doesn't match domain list, then hide the menu items
+			if( $user && $banned ) {
+				remove_menu_page('bvbackup');
+			}
+		}
+	}
+}
+add_action( 'admin_init', 'fs_check_blogvault_is_active' );
+
+/* -- All in One SEO Pack -- */
 
 // disable the SEO menu in the admin toolbar
 add_filter( 'aioseo_show_in_admin_bar', '__return_false' );
@@ -87,7 +160,7 @@ if ( function_exists( 'aioseo' ) ) {
 	} );
 }
 
-/* Plugin Notes Plus */
+/* -- Plugin Notes Plus -- */
 
 // Remove the Plugin Notes Plus data for all users other than the ones we approve below
 // based on their user email domain, or their user ID
