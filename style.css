@@ -5,7 +5,7 @@ Description: Divi child theme via FreshySites
 Author: FreshySites
 Author URI: https://freshysites.com/
 Template: Divi
-Version: 2.3.1
+Version: 3.0.0
 */
 /* Add your own styles at the bottom */
 
@@ -221,9 +221,23 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 
 /* -- FOOTER -- */
 
-#freshy_copyright span {
-	display: inline-block;
-	line-height: 1.5em;
+/* - Bottom Bar - */
+
+/* if the bottom bar has equal column height setting, then make it always be flex, and stack the columns initially (for mobile use)
+ * and make the columns vertical aligned to be vertically centered too */
+#fs-footer-bottom-bar > .et_pb_row.et_pb_equal_columns {
+	display: flex;
+	align-items: center;
+}
+
+/* copyright wrapper */
+#freshy_copyright {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+	font-size: 13px;
+	line-height: 1.25em;
 }
 
 /* vertical pipe divider */
@@ -239,39 +253,65 @@ h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, li
 	display: block;
 }
 
+/* add an FS logo via background */
 #freshy_copyright a.copyright_fs {
 	display: block;
-	vertical-align: middle;
 	width: 42px;
 	height: 20px;
 	background-image: url("/wp-content/uploads/fs-lettermark-white.svg");
 	background-repeat: no-repeat;
-	background-size: 42px 20px;
+	background-position: center;
+	background-size: contain;
 	text-indent: 200%;
 	white-space: nowrap;
 	overflow: hidden;
-	margin: 0 auto;
+	margin: 0;
+	flex-shrink: 0;
+	transition: all 0.4s ease-in-out;
+}
+/* FS logo link hover */
+#freshy_copyright a.copyright_fs:hover {
+	opacity: 0.8;
 }
 
-/* fix if using Impreza to remove underline */
-#freshy_copyright a:hover {
-	border: 0 !important;
+/* remove the bottom margin that Divi adds to the social media follow icons */
+#fs-footer-bottom-bar .et_pb_social_media_follow li {
+	margin-bottom: 0;
 }
 
 @media (min-width: 600px) {
-	/* vertical pipe divider */
+	/* make the copyright elements be side by side at wider screens */
+	#freshy_copyright {
+		flex-direction: row;
+	}
+	/* change horizontal pipe divider to vertical on wider screens */
 	#freshy_copyright span.copyright_via {
 		width: 1px;
 		height: 20px;
 		margin: 0 10px;
-		display: inline-block;
-	}
-	#freshy_copyright a.copyright_fs {
-		display: inline-block;
 	}
 }
 
 @media (max-width: 980px) {
+	/* make sure the row has columns going side by side instead of stacked */
+	#fs-footer-bottom-bar > .et_pb_row.et_pb_equal_columns {
+		flex-direction: column;
+	}
+	/* when stacked, adjust the gap between stacked columns */
+	#fs-footer-bottom-bar > .et_pb_row.et_pb_equal_columns > .et_pb_column {
+		margin-bottom: 1rem;
+	}
+	/* swap the order of columns when stacked, to the first column is the last one 
+	 * and give no bottom margin to the first column, since we re-ordered it to the bottom */
+	#fs-footer-bottom-bar > .et_pb_row.et_pb_equal_columns > .et_pb_column:first-child {
+		order: 1;
+		margin-bottom: 0;
+	}
+	/* center the copyright stuff when columns are stacked */
+	#freshy_copyright {
+		justify-content: center;
+	}
+	/* remove left margin on first social icon in regular Divi footer (when not using Theme Builder) when stacked */
 	#footer-bottom .et-social-icons li:first-child {
 		margin-left: 0;
 	}
