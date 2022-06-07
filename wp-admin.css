@@ -1,0 +1,11 @@
+/* hide "Return to Standard Editor" button for Divi */
+/* https://i.imgur.com/o4IlwMl.png */
+.et-db #et-boc .et-l #et_pb_toggle_builder.et_pb_builder_is_used {
+   display: none !important;
+}
+
+/* hide the "Threats Found" notice for Jetpack */
+/* https://i.imgur.com/iIYdL6z.png */
+li#wp-admin-bar-jetpack-scan-notice {
+  display: none !important;
+}
