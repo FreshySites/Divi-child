@@ -29,8 +29,10 @@ function fs_theme_enqueue_admin_stuff() {
 	$current_theme = wp_get_theme(); 
 	// get the version number of the current child theme
 	$child_version = $current_theme->get('Version'); 
+	// we check file date of WP backend stylesheet, so we can append to version number string (for cache busting)
+	$style_cache_buster = date("YmdHis", filemtime( get_stylesheet_directory() . '/wp-admin.css'));
 	// Begin enqueue for CSS file that loads in WP backend
-	wp_enqueue_style( 'fs-child-style-admin', get_stylesheet_directory_uri() . '/wp-admin.css', array(), $child_version );
+	wp_enqueue_style( 'fs-child-style-admin', get_stylesheet_directory_uri() . '/wp-admin.css', array(), $child_version .'-'. $style_cache_buster );
 }
 add_action( 'admin_enqueue_scripts', 'fs_theme_enqueue_admin_stuff' );
 
