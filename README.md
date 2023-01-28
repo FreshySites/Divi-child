@@ -1,5 +1,5 @@
 # Divi-child
-Divi child theme via FreshySites
+Divi child theme via Freshy
 
 - Dedicated stylesheet with helpful classes and Divi fixes already applied
 - Dedicated script file with Divi blurb-click helper class, and jQuery to make mobile sub menus be collapsible
@@ -8,4 +8,4 @@ Divi child theme via FreshySites
 
 <strong>Please note:</strong> you should remove the `-master` text from the `Divi-child` folder names, since GitHub adds those, and WordPress doesn't want them.
 
-Need help? FreshySites is a <a href="https://freshysites.com/wordpress/">WordPress website development agency</a>, and the <a href="https://freshysites.com/wordpress/divi/">WordPress Divi theme experts</a> in building websites.
+Need help? Freshy is a <a href="https://freshysites.com/wordpress/">WordPress website development agency</a>, and the <a href="https://freshysites.com/wordpress/divi/">WordPress Divi theme experts</a> in building websites.
