@@ -26,5 +26,6 @@ jobs:
           REPO: self
           BRANCH: divi-child-new-approach # The branch name where you want to push the assets
           FOLDER: assets # The directory where your assets are generated
+          TARGET_DIR: assets # The directory where you want to push the assets
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
           MESSAGE: "Build: ({sha}) {msg}" # The commit message
