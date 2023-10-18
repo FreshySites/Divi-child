@@ -12,6 +12,16 @@ gulp.task('build-css', function () {
 	           .pipe(gulp.dest('assets/css'));
 });
 
+// Compile JS
+gulp.task('build-js', function () {
+	return gulp.src('src/js/index.js')
+	           .pipe(rename('script.js'))
+	           .pipe(gulp.dest('assets/js'));
+})
+
+// Compile both
+gulp.task('build', gulp.series('build-css', 'build-js'));
+
 // Watch for changes in SCSS files
 gulp.task('watch', function () {
 	gulp.watch('src/scss/*.scss', gulp.series('build-css'));

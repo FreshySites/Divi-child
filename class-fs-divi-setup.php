@@ -54,16 +54,16 @@ class FS_Divi_Setup {
 		// get the version number of the current child theme
 		$child_version = $current_theme->get( 'Version' );
 		// we check file date of child stylesheet and script, so we can append to version number string (for cache busting)
-		$style_cache_buster  = date( 'YmdHis', filemtime( get_stylesheet_directory() . '/style.css' ) );
-		$script_cache_buster = date( 'YmdHis', filemtime( get_stylesheet_directory() . '/script.js' ) );
+		$style_cache_buster  = date( 'YmdHis', filemtime( get_stylesheet_directory() . '/assets/css/style.css' ) );
+		$script_cache_buster = date( 'YmdHis', filemtime( get_stylesheet_directory() . '/assets/js/script.js' ) );
 		// first we pull in the parent theme styles that it needs
 		wp_enqueue_style( $parent_handle, get_template_directory_uri() . '/style.css', array(), $parent_version );
 		// then we get the child theme style.css file, which is dependent on the parent theme style, then append string of child version and file date
-		wp_enqueue_style( 'fs-child-style', get_stylesheet_uri(), array( $parent_handle ), $child_version . '-' . $style_cache_buster );
+		wp_enqueue_style( 'fs-child-style', get_stylesheet_uri() . '/assets/css/style.css', array( $parent_handle ), $child_version . '-' . $style_cache_buster );
 		// will grab the script file from the child theme directory, and is reliant on jquery and the divi-custom-script (so it comes after that one)
 		wp_enqueue_script(
 			'fs-child-script',
-			get_stylesheet_directory_uri() . '/script.js',
+			get_stylesheet_directory_uri() . '/assets/js/script.js',
 			array( 'jquery', 'divi-custom-script' ),
 			$child_version . '-' . $script_cache_buster,
 			true
