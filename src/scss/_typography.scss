@@ -1,0 +1,56 @@
+
+.text-lowercase {
+  &, h1, h2, h3, h4, h5, h6, li, a {
+    text-transform: lowercase;
+  }
+}
+
+.text-uppercase {
+  &, h1, h2, h3, h4, h5, h6, li, a {
+    text-transform: uppercase;
+  }
+}
+
+.text-capitalize {
+    &, h1, h2, h3, h4, h5, h6, li, a {
+        text-transform: capitalize;
+    }
+}
+
+.text-transform-none {
+    &, h1, h2, h3, h4, h5, h6, li, a {
+        text-transform: none;
+    }
+}
+
+.font-weight-bold {
+    &, h1, h2, h3, h4, h5, h6, li, a {
+        font-weight: 700;
+    }
+}
+
+.font-weight-normal {
+    &, h1, h2, h3, h4, h5, h6, li, a {
+        font-weight: 400;
+    }
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.text-underline-none, .text-underline-none a {
+  text-decoration: none !important;
+}
+
+.text-underline, .text-underline a {
+  text-decoration: underline !important;
+}
+
+.text-nowrap, .text-nowrap a {
+  white-space: nowrap !important;
+}
+
+.text-wrap-normal, .text-wrap-normal a {
+  white-space: normal !important;
+}

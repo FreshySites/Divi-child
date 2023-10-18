@@ -1,0 +1,120 @@
+/* CHECKLIST */
+
+.checklist {
+  ul {
+    margin: 0;
+    padding: 0 !important;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 30px;
+      margin: 0 0 6px !important;
+
+      &::before {
+        font-family: 'ETModules';
+        content: '\4e';
+        width: 20px;
+        margin: 0;
+        display: inline-block;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--color-primary);
+        font-size: 22px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  &.pluslist ul li::before {
+    content: '\e050';
+  }
+
+  &.externallist ul li::before {
+    content: '\e906';
+  }
+
+  &.columns {
+    ul {
+      margin-bottom: 30px !important;
+
+      @media (max-width: 638px) {
+        margin-bottom: 20px !important;
+
+        &:last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+
+      @media (min-width: 639px) {
+        &::after {
+          content: '';
+          clear: both;
+          display: table;
+        }
+
+        li {
+          float: left;
+          width: 50%;
+          padding-right: 30px;
+
+          &:nth-child(odd) {
+            clear: both;
+          }
+        }
+
+        &.alt ul li {
+          column-count: 2;
+          column-gap: 20px;
+          break-inside: avoid-column;
+        }
+      }
+
+      @media (min-width: 981px) {
+        li {
+          float: left;
+          width: 33.333333%;
+
+          &:nth-child(odd) {
+            clear: none;
+          }
+
+          &:nth-child(3n+1) {
+            clear: both;
+          }
+        }
+
+        &.alt ul {
+          column-count: 3;
+        }
+      }
+
+      @media (min-width: 1199px) {
+        li {
+          float: left;
+          width: 25%;
+
+          &:nth-child(odd) {
+            clear: none;
+          }
+
+          &:nth-child(3n+1) {
+            clear: none;
+          }
+
+          &:nth-child(4n+1) {
+            clear: both;
+          }
+        }
+
+        &.alt ul {
+          column-count: 4;
+        }
+      }
+    }
+  }
+}
+
+/* END CHECKLIST */

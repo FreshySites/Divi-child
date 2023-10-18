@@ -1,12 +1,27 @@
 <?php
+/**
+ * Set up All In One SEO pack hooks
+ *
+ * @package FS_Divi_Child
+ * @since 1.0.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
- * Disable the SEO menu item in the admin toolbar
+ * Hide the AIOSEO Pack admin bar menu
  */
 add_filter( 'aioseo_show_in_admin_bar', '__return_false' );
 
-// disable the AIOSEO Details column for users that don't have a certain email address
-// https://wordpress.org/support/topic/remove-aioseo-details-via-remove_action/#post-16434394
+/**
+ * Disable the AIOSEO Details column for users that don't have a certain email address
+ * @see https://wordpress.org/support/topic/remove-aioseo-details-via-remove_action/#post-16434394
+ *
+ * @return void
+ * @since 1.0.0
+ */
 add_action( 'current_screen', 'fs_remove_aioseo_column', 0 );
 function fs_remove_aioseo_column() {
 	// get current User
@@ -28,10 +43,9 @@ function fs_remove_aioseo_column() {
 
 	// go through each current screen details
 	foreach ( $wp_filter['current_screen'][1] as $actionName => $params ) {
-		if (
-			empty( $params['function'][0] ) ||
-			! is_object( $params['function'][0] ) ||
-			stripos( get_class( $params['function'][0] ), 'aioseo' ) === false
+		if ( empty( $params['function'][0] )
+			|| ! is_object( $params['function'][0] )
+			|| stripos( get_class( $params['function'][0] ), 'aioseo' ) === false
 		) {
 			continue;
 		}

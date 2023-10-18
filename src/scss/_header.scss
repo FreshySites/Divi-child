@@ -1,0 +1,138 @@
+// Helps logo to not be pixelated when scaled down
+#logo {
+  transform: none !important;
+}
+
+// When mobile menu is open, change hamburger icon to x icon
+#et_mobile_nav_menu {
+  &.mobile_nav.opened {
+    .mobile_menu_bar::before {
+      content: '\4d';
+    }
+  }
+}
+
+// Makes sub sub menu icon be a right arrow instead of down arrow
+#top-menu, #et-secondary-nav {
+  .menu-item-has-children {
+    .menu-item-has-children > a:first-child::after {
+      content: '5';
+    }
+  }
+}
+
+// If the parent link of the child menu is a deadlink, then make it not clickable
+#main-header {
+  #mobile_menu.et_mobile_menu {
+    .menu-item-has-children > a[href="#0"] {
+      pointer-events: none;
+    }
+  }
+}
+
+// Mobile menu toggling elements, injected via jQuery
+
+// Make menu list item be relative, to be able to position toggle within this item
+#main-header {
+  #mobile_menu.et_mobile_menu {
+    .menu-item-has-children {
+      position: relative;
+
+      // The new toggle element, which is added via jQuery
+      .sub-menu-toggle {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.03);
+        z-index: 1;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 50%;
+        top: 4px;
+        right: 4px;
+        cursor: pointer;
+        text-align: center;
+
+        &.popped {
+          background-color: rgba(0, 0, 0, 0.1);
+
+          // Toggle icon when triggered
+          &::before {
+            content: '\32';
+          }
+        }
+
+        // Toggle icon
+        &::before {
+          font-family: "ETmodules" !important;
+          font-weight: normal;
+          font-style: normal;
+          font-variant: normal;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          line-height: 36px;
+          font-size: 24px;
+          text-transform: none;
+          speak: none;
+          content: '\33';
+        }
+      }
+
+      // Hide sub menus by default
+      .sub-menu-toggle ~ ul.sub-menu {
+        display: none !important;
+        padding-left: 0;
+
+        // Show sub menu when triggered via jQuery toggle, and add slight bg color
+        &.popped {
+          display: block !important;
+          background-color: rgba(0, 0, 0, 0.03);
+        }
+      }
+
+      // Remove sub menu list item left padding, since padding will be on anchors
+      li li {
+        padding-left: 0;
+      }
+
+      // Adjust mobile menu anchors side paddings
+      a {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      // Indent sub menu
+      li a {
+        padding-left: 40px;
+        padding-right: 20px;
+      }
+
+      // Indent sub sub menus further
+      li li a {
+        padding-left: 60px;
+        padding-right: 20px;
+      }
+
+      // If mobile menu anchor has toggle, make room for it to fit next to the link
+      .menu-item-has-children .sub-menu-toggle + a {
+        padding-right: 44px;
+      }
+    }
+  }
+}
+
+// End mobile menu toggling elements
+
+// Undo Divi's default styling of mobile menu links that have children
+#main-header {
+  #mobile_menu.et_mobile_menu {
+    .menu-item-has-children > a {
+      background-color: transparent;
+      font-weight: inherit;
+    }
+
+    // Make the current page's mobile menu link different
+    li.current-menu-item > a {
+      font-weight: bolder;
+    }
+  }
+}

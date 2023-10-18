@@ -1,0 +1,21 @@
+// Create a map of colors black, white, primary, secondary, etc
+
+$black: #000;
+$white: #fff;
+$primary: #32a709;
+$secondary: #daf238;
+$tertiary: #e4debe;
+
+$colors: (
+  "black": $black,
+  "white": $white,
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary
+);
+
+:root {
+  @each $color, $value in $colors {
+        --color-#{$color}: #{$value};
+  }
+}
