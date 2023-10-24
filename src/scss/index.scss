@@ -1,0 +1,164 @@
+@import 'variables';
+@import 'colors';
+@import 'background';
+@import 'typography';
+@import 'header';
+@import 'custom';
+
+
+/* Fullwidth section and row styles */
+.et_pb_section.fullwidth-section,
+.et_pb_section.fullwidth-row {
+  padding: 0;
+
+  .et_pb_row {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    > .et_pb_column {
+      padding: 50px 10%;
+    }
+
+    @media (min-width: 767px) {
+      > .et_pb_column {
+        padding: 80px 6%;
+      }
+    }
+
+    /* Adjust gap between stacked columns */
+    &.et_pb_gutters1 {
+      > .et_pb_column .et_pb_module:not(:last-child) {
+        margin-bottom: 3px;
+      }
+
+      @media (min-width: 981px) {
+        > .et_pb_column_2_3 .et_pb_module:not(:last-child),
+        > .et_pb_column_1_3 .et_pb_module:not(:last-child) {
+          margin-bottom: 4.242%;
+        }
+      }
+    }
+  }
+}
+
+/* Bottom Bar */
+#fs-footer-bottom-bar {
+  > .et_pb_row.et_pb_equal_columns {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 980px) {
+      flex-direction: column;
+
+      > .et_pb_column:first-child {
+        order: 1;
+        margin-bottom: 0;
+      }
+
+      > .et_pb_column {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  /* Copyright wrapper styles */
+  #freshy_copyright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 13px;
+    line-height: 1.25em;
+
+    span.copyright_via {
+      width: 33.33333%;
+      height: 1px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-indent: 200%;
+      background: rgba(255, 255, 255, 0.25);
+      vertical-align: middle;
+      margin: 10px auto 15px;
+      display: block;
+    }
+
+    a.copyright_fs {
+      display: block;
+      width: 68px;
+      height: 20px;
+      background-image: url("/wp-content/uploads/Freshy_Logo_White_RGB.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      text-indent: 200%;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 4px 0 0 0;
+      flex-shrink: 0;
+      transition: opacity 0.4s ease-in-out;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  /* Remove the bottom margin that Divi adds to social media follow icons */
+  .et_pb_social_media_follow li {
+    margin-bottom: 0;
+  }
+}
+
+/* Divi Hacks */
+.et_parallax_bg {
+  background-position: center center;
+}
+
+/* Ensure the last paragraph has padding only if it's the last child */
+p:last-of-type,
+p:not(.has-background):last-of-type {
+  padding-bottom: 1em;
+}
+
+p:last-child,
+p:not(.has-background):last-child {
+  padding-bottom: 0;
+}
+
+/* Add padding between paragraphs in the Fullwidth Header module */
+.et_pb_fullwidth_header p:not(:last-child) {
+  padding-bottom: 1em;
+}
+
+/* Password Protected */
+.post-password-required .et_password_protected_form {
+  width: 80%;
+  margin: 10% auto;
+  max-width: 1140px;
+
+  p input {
+    border: 1px solid !important;
+  }
+
+  .et_submit_button::after {
+    display: none;
+  }
+}
+
+/* Testimonials Plugin */
+.b3_archive_testimonials_grid article .b3_quote.grid_quote::before,
+.et_pb_module.et_pb_testimonial_slider .et_pb_slides_testi::before {
+  transform: scale(-1, -1);
+}
+
+/* Blog */
+.et_pb_widget.widget_recent_entries ul li {
+  margin-bottom: 1em;
+
+  span.post-date {
+    display: table;
+    font-size: 0.85em;
+  }
+}

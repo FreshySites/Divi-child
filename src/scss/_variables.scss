@@ -1,0 +1,23 @@
+// Create a map of colors black, white, primary, secondary, etc
+
+$black: #000;
+$white: #fff;
+$primary: var(--wp-preset-divi-color-1);
+$secondary: var(--wp-preset-divi-color-2);
+$tertiary: var(--wp-preset-divi-color-3);
+$quaternary: var(--wp-preset-divi-color-4);
+
+$colors: (
+  "black": $black,
+  "white": $white,
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary,
+  "quaternary": $quaternary
+);
+
+:root {
+  @each $color, $value in $colors {
+        --color-#{$color}: #{$value};
+  }
+}

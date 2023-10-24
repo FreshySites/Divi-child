@@ -1,0 +1,69 @@
+// Variables
+$padding-small: 50px 10%;
+$padding-medium: 80px 6%;
+
+// Fullwidth section and row styles
+.fullwidth-section.et_pb_section,
+.fullwidth-row.et_pb_section {
+  padding: 0;
+}
+
+.fullwidth-row.et_pb_section .et_pb_row > .et_pb_column {
+  padding: $padding-small;
+}
+
+@media (min-width: 767px) {
+  .fullwidth-row.et_pb_section .et_pb_row > .et_pb_column {
+    padding: $padding-medium;
+  }
+
+  .fullwidth-row.et_pb_section .et_pb_row.et_pb_gutters1 > .et_pb_column .et_pb_module:not(:last-child) {
+    margin-bottom: 4.242%;
+  }
+}
+
+@media (min-width: 981px) {
+  .fullwidth-row.et_pb_section .et_pb_row.et_pb_gutters1 > .et_pb_column_2_3 .et_pb_module:not(:last-child),
+  .fullwidth-row.et_pb_section .et_pb_row.et_pb_gutters1 > .et_pb_column_1_3 .et_pb_module:not(:last-child) {
+    margin-bottom: 9.27%;
+  }
+}
+
+// Stacked flex styles
+@media (max-width: 980px) {
+  // Stacked flex ROW
+  .stacked-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  // Stacked flex COLUMN order
+  @for $i from -4 through 4 {
+    .stacked-order-#{$i} {
+      order: #{$i};
+    }
+  }
+
+  // Add margin to the last column
+  .stacked-flex:last-child .et_pb_column:last-child {
+    margin-bottom: 30px;
+  }
+}
+
+/* RESPONSIVE */
+
+/* For mobile */
+@media screen and (max-width: 767px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+/* For desktop */
+@media screen and (min-width: 768px) {
+  .hide-desktop {
+    display: none;
+  }
+}
+
+/* END RESPONSIVE */
