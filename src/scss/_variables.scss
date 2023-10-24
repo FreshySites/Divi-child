@@ -2,16 +2,18 @@
 
 $black: #000;
 $white: #fff;
-$primary: #32a709;
-$secondary: #daf238;
-$tertiary: #e4debe;
+$primary: var(--wp-preset-divi-color-1);
+$secondary: var(--wp-preset-divi-color-2);
+$tertiary: var(--wp-preset-divi-color-3);
+$quaternary: var(--wp-preset-divi-color-4);
 
 $colors: (
   "black": $black,
   "white": $white,
   "primary": $primary,
   "secondary": $secondary,
-  "tertiary": $tertiary
+  "tertiary": $tertiary,
+  "quaternary": $quaternary
 );
 
 :root {
